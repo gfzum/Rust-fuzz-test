@@ -1,5 +1,7 @@
 // 问题：mirai 看不出来 double free 的 bug
 
+use core::panic;
+
 // 获得 s 的所有权，s 会在函数结束时被 drop
 fn genvec(mut s:String) -> Vec<u8>{
     let ptr = s.as_mut_ptr();
@@ -23,7 +25,10 @@ fn main(){
     let suffix = "rust";
     if !input.ends_with(suffix){
         println!("input string should end with {:?}", suffix);
-        return;
+
+        panic!("panic");
+
+        // return;
     }
 
     // input should not contain int
@@ -50,5 +55,7 @@ fn main(){
 
     let v = genvec(input);
     println!("{:?}", v);
+
+    panic!("");
 
 }

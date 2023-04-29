@@ -13,11 +13,17 @@ fn split_at_mut(slice: &mut str, index: usize) -> (&mut str, &mut str) {
     }
 }
 
-fn main() {
-
+fn read_input() -> String{
     let mut input: String = String::new();
     stdin().read_line(&mut input).unwrap();
     input= input.trim().parse().unwrap();
+
+    input
+}
+
+fn main() {
+
+    let mut input = read_input();
 
     // 限制输入字符串的长度
     let limit_length: usize = 10; 

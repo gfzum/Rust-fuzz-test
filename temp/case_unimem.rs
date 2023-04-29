@@ -19,6 +19,9 @@
 // }
 
 fn main(){
+
+    // panic!();
+
     // let mut v = vec![1, 2, 3, 4, 5];
     // let (p, len, cap) = v.into_raw_parts();
     // let mut u = [p as u64, len as _, cap as _];
