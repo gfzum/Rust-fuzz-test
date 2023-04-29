@@ -21,8 +21,8 @@ fn genvec(mut s:String) -> Vec<u8>{
 }
 
 fn main(){
-    let input = read_input();
-    // let input = "ee7rust".to_string();
+    // let input = read_input();
+    let input = "zzzzrust".to_string();
 
     // suffix match
     let suffix = "rust";

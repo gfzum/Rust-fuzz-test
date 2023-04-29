@@ -11,8 +11,7 @@ fn main() {
     // let input = read_input();
     // let input = input.as_str();
 
-    // 当 input 是 "input:--" 时，会 panic
-    let input = "input:33";
+    let input = "input:---";
 
     let re = regex::Regex::new(r"^input:[\d-]+$").unwrap();
     if !re.is_match(input) {

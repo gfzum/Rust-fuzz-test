@@ -22,7 +22,8 @@ fn split_at_mut(slice: &mut str, index: usize) -> (&mut str, &mut str) {
 
 fn main() {
 
-    let mut input = read_input();
+    // let mut input = read_input();
+    let mut input = "rust".to_string();
 
     // 限制输入字符串的长度
     let limit_length: usize = 10; 
