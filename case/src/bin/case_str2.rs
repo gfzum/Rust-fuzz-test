@@ -1,5 +1,12 @@
-use std::io::stdin;
 use std::slice;
+
+fn read_input() -> String{
+    let mut input: String = String::new();
+    std::io::stdin().read_line(&mut input).unwrap();
+    input= input.trim().parse().unwrap();
+
+    input
+}
 
 fn split_at_mut(slice: &mut str, index: usize) -> (&mut str, &mut str) {
     let len = slice.len();
@@ -13,14 +20,6 @@ fn split_at_mut(slice: &mut str, index: usize) -> (&mut str, &mut str) {
     }
 }
 
-fn read_input() -> String{
-    let mut input: String = String::new();
-    stdin().read_line(&mut input).unwrap();
-    input= input.trim().parse().unwrap();
-
-    input
-}
-
 fn main() {
 
     let mut input = read_input();
@@ -28,20 +27,20 @@ fn main() {
     // 限制输入字符串的长度
     let limit_length: usize = 10; 
     if input.len() > limit_length {
-        println!("input string too long");
+        // println!("input string too long");
         return;
     }
 
     // 检查输入字符串是否包含子串
     let substr: &str = "rust";
     if !input.contains(substr) {
-        println!("input string does not contain \"{}\"", substr);
+        // println!("input string does not contain \"{}\"", substr);
         return;
     }
 
     // 分割字符串，如果分割位置超出字符串长度，会 panic
     let split_index = 5;
-    println!("split s into 2 slices at index {}", split_index);
+    // println!("split s into 2 slices at index {}", split_index);
     let (a, b) = split_at_mut(&mut input, split_index);
 
     println!("split part 1 = {:?}", a);
