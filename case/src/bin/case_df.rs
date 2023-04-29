@@ -11,26 +11,44 @@ fn genvec(mut s:String) -> Vec<u8>{
 }
 
 fn main(){
-    let target = String::from("rust fuzz test");
-    println!("target string is {:?}, input your operations: ", target);
+    // let target = String::from("rust fuzz test");
+    // println!("target string is {:?}, input your operations: ", target);
+    println!("input target string: ");
 
     let mut input = String::new();
     std::io::stdin().read_line(&mut input).unwrap();
     input = input.trim().parse().unwrap();
 
-    match input.as_str(){
-        "length" => {
-            println!("{:?}", target.len());
-        },
-        "reverse" => {
-            println!("{:?}", target.chars().rev().collect::<String>());
-        },
-        "bytes" => {
-            let v = genvec(target);
-            println!("{:?}", v);
-        }
-        _ => {
-            println!("unknown operation {:?}", input);
-        }
+    // suffix match
+    let suffix = "rust";
+    if !input.ends_with(suffix){
+        println!("input string should end with {:?}", suffix);
+        return;
     }
+
+    // input should not contain int
+    if input.chars().any(|c| c.is_digit(10)){
+        println!("input string should not contain int");
+        return;
+    }
+
+    // input's first 4 chats should be greater than "test"
+    if input.chars().take(4).collect::<String>() <= "test".to_string(){
+        println!("input's first 4 chats should be greater than \"test\"");
+        return;
+    }
+
+    // first 3 chars' ascii sum >= 300
+    let mut sum = 0;
+    for c in input.chars().take(3){
+        sum += c as u32;
+    }
+    if sum < 350{
+        println!("first 3 chars' ascii sum should >= 350");
+        return;
+    }
+
+    let v = genvec(input);
+    println!("{:?}", v);
+
 }
