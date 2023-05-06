@@ -1,5 +1,5 @@
 [package]
-name = "str_fuzz"
+name = "hello-fuzz"
 version = "0.1.0"
 edition = "2021"
 
